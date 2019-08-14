@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import { SIGNUP_ROUTE } from '../../_main/routeConstants';
+
 import Loading from '../../Loading';
 
 export default function CoinList() {
@@ -29,6 +33,7 @@ export default function CoinList() {
   return (
     <div>
       <h2>Coin List</h2>
+      <Link to={SIGNUP_ROUTE}>Go to Coin List Page</Link>
       { isLoading && <Loading />}
       { !isLoading && list.length > 0 && renderList()}
       {/* <pre>{JSON.stringify(list, null, 4)}</pre> */}
