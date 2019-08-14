@@ -9,6 +9,7 @@ export default function SignupForm({ sendDataUp }) {
   const [password, setPassword] = useInput('');
 
   useEffect(() => {
+    console.log('Am I running');
     const isFirstNameValid = firstName.length > 5;
     const isLastNameValid = lastName.length > 5;
     const isEmailValid = email.length > 5;
