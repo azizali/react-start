@@ -1,11 +1,12 @@
 import './style.css';
 import React, { useState, useEffect } from 'react';
+import useInput from '../../_main/hooks/useInput';
 
 export default function SignupForm({ sendDataUp }) {
-  const [firstName, setFirstName] = useState('Starbucks');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [firstName, setFirstName] = useInput('Starbucks');
+  const [lastName, setLastName] = useInput('');
+  const [email, setEmail] = useInput('');
+  const [password, setPassword] = useInput('');
 
   useEffect(() => {
     const isFirstNameValid = firstName.length > 5;
@@ -23,21 +24,6 @@ export default function SignupForm({ sendDataUp }) {
     }
   }, [firstName, lastName, email, password, sendDataUp]);
 
-  const handleFirstName = (e) => {
-    setFirstName(e.target.value);
-  };
-
-  const handleLastName = (e) => {
-    const { value } = e.target;
-
-    setLastName(value);
-  };
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-  };
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-  };
   return (
     <>
       {firstName}
@@ -52,7 +38,7 @@ export default function SignupForm({ sendDataUp }) {
           name="first-name"
           id="first-name"
           value={firstName}
-          onChange={handleFirstName}
+          onChange={setFirstName}
         />
         { firstName.length < 5 && <small>Field is invalid</small>}
       </label>
@@ -63,7 +49,7 @@ export default function SignupForm({ sendDataUp }) {
           name="last-name"
           id="last-name"
           value={lastName}
-          onChange={handleLastName}
+          onChange={setLastName}
         />
       </label>
       <label htmlFor="email">
@@ -73,7 +59,7 @@ export default function SignupForm({ sendDataUp }) {
           name="email"
           id="email"
           value={email}
-          onChange={handleEmail}
+          onChange={setEmail}
         />
       </label>
       <label htmlFor="password">
@@ -83,7 +69,7 @@ export default function SignupForm({ sendDataUp }) {
           name="password"
           id="password"
           value={password}
-          onChange={handlePassword}
+          onChange={setPassword}
         />
       </label>
     </>
