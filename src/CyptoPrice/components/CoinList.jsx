@@ -6,6 +6,8 @@ import { SIGNUP_ROUTE } from '../../_main/routeConstants';
 import Loading from '../../Loading';
 
 export default function CoinList() {
+  // Uncomment this line to show ErrorFallback component
+  // throw new Error();
   const [list, setList] = useState([]);
   const [isLoading, setLoading] = useState(false);
 
