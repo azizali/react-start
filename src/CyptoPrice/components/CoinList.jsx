@@ -1,30 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import { SIGNUP_ROUTE } from '../../_main/routeConstants';
 
 import Loading from '../../Loading';
+import { getCoinList } from '../actions';
 
-export default function CoinList() {
-  // Uncomment this line to show ErrorFallback component
-  // throw new Error();
-  const [list, setList] = useState([]);
-  const [isLoading, setLoading] = useState(false);
-
-  // Fetch function
+function CoinList({ getList, list, isLoading }) {
   useEffect(() => {
-    setLoading(true);
-    fetch('https://api.coinpaprika.com/v1/coins')
-      .then((res) => res.json())
-      .then((json) => {
-        setLoading(false);
-        setList(json);
-      })
-      .catch((err) => {
-        setLoading(false);
-        console.log(err);
-      });
-  }, []);
+    getList();
+  }, [getList]);
 
   const renderList = () => (
     <ul>
@@ -42,3 +28,16 @@ export default function CoinList() {
     </div>
   );
 }
+
+const mapStateToProps = (state) => ({
+  list: state.coins.list.data,
+  isLoading: state.coins.list.isLoading,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getList: () => {
+    dispatch(getCoinList());
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CoinList);

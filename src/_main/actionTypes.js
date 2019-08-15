@@ -4,3 +4,8 @@ export const SET_LOGIN_STATUS = 'SET_LOGIN_STATUS';
 // PRODUCTS
 export const SET_PRODUCT = 'SET_PRODUCT';
 export const CLEAR_PRODUCTS = 'CLEAR_PRODUCTS';
+
+// COINS
+export const SET_COINS = 'SET_COINS';
+export const CLEAR_COINS = 'CLEAR_COINS';
+export const SET_COINS_LOADING = 'SET_COINS_LOADING';
