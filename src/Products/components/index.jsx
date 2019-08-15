@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import { PRODUCT_ROUTE } from '../_main/routeConstants';
-import ProductList from './components/ProductList';
-import ProductDetails from './components/ProductDetails';
+import { PRODUCT_ROUTE } from '../../_main/routeConstants';
+import ProductList from './ProductList';
+import ProductDetails from './ProductDetails';
 
 export default function Products() {
   return (

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { render } from 'react-dom';
 import {
   BrowserRouter, Route, Switch, Redirect,
@@ -11,23 +12,26 @@ import SignupPage from './Signup';
 import CoinList from './CyptoPrice';
 import Home from './Home';
 import Products from './Products';
+import store from './_main/store';
 
 function App() {
   return (
-    <BrowserRouter>
-      <ErrorFallback>
-        <Switch>
-          <Redirect path="/login" to={SIGNUP_ROUTE} />
-          <Route strict exact path={HOME_ROUTE} component={Home} />
-          <Route strict exact path={SIGNUP_ROUTE} component={SignupPage} />
-          <Route path={COINLIST_ROUTE} component={CoinList} />
-          <Route path={PRODUCT_ROUTE} component={Products} />
-          <Route component={Home} />
-        </Switch>
-      </ErrorFallback>
-      {/* <SignupPage /> */}
-      {/* <CoinList /> */}
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <ErrorFallback>
+          <Switch>
+            <Redirect path="/login" to={SIGNUP_ROUTE} />
+            <Route strict exact path={HOME_ROUTE} component={Home} />
+            <Route strict exact path={SIGNUP_ROUTE} component={SignupPage} />
+            <Route path={COINLIST_ROUTE} component={CoinList} />
+            <Route path={PRODUCT_ROUTE} component={Products} />
+            <Route component={Home} />
+          </Switch>
+        </ErrorFallback>
+        {/* <SignupPage /> */}
+        {/* <CoinList /> */}
+      </BrowserRouter>
+    </Provider>
   );
 }
 
